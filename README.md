@@ -19,3 +19,6 @@ make
 ./webserver # Default port 3000
 ./webserver 3005 # Runs webserver at port 3005
 ```
+
+Go to your web browser.
+Go to http://locahost:3000 - or whatever port you assigned in
