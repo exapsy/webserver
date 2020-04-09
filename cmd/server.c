@@ -49,10 +49,11 @@ Error *start_webserver(uint port) {
     int valread = read(new_socket, buffer, BUFFER_LENGTH);
     printf("%s\n", buffer);
 
-    string httpResponse = "HTTP/1.1 200 OK\n\n\
-    Hello World!";
+    string httpResponse = "\
+HTTP/1.1 200 OK\n\n\
+<html><body><h1>Header! Hallo</h1><p>Lorem ipsum random paragraph things</p></body></html>";
     send(new_socket, httpResponse, strlen(httpResponse), 0);
-    printf("Hello message sent\n");
+    printf("Response sent\n");
     close(new_socket);
   }
 
