@@ -21,4 +21,5 @@ make
 ```
 
 Go to your web browser.
-Go to http://locahost:3000 - or whatever port you assigned in
+
+Go to [http://localhost:3000](http://locahost:3000) - or whatever port you assigned in
