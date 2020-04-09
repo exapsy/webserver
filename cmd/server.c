@@ -9,8 +9,6 @@
 #define BUFFER_LENGTH 1024
 
 Error *start_webserver(uint port) {
-  printf("Listening on port %d ...\n", port);
-
   /* Create the socket */
   int sockfd = socket(PF_INET, SOCK_STREAM, 0);
   if (sockfd < 0) {
@@ -35,18 +33,28 @@ Error *start_webserver(uint port) {
   if (listen(sockfd, 3) < 0) {
     return err_new("Couldn't listen", 4);
   }
-  int new_socket;
-  if ((new_socket = accept(sockfd, (struct sockaddr *)&address,
-                           (socklen_t *)&addrlen)) < 0) {
-    return err_new("Couldn't accept", 5);
-  }
 
-  const size_t buffLen = 1024;
-  char buffer[BUFFER_LENGTH] = {0};
-  int valread = read(new_socket, buffer, BUFFER_LENGTH);
-  printf("%s\n", buffer);
-  send(new_socket, "Hello!", strlen("Hello!"), 0);
-  printf("Hello message sent\n");
+  printf("Listening on port %d ...\n", port);
+
+  /* Accepting connections */
+  while (1) {
+    int new_socket;
+    if ((new_socket = accept(sockfd, (struct sockaddr *)&address,
+                             (socklen_t *)&addrlen)) < 0) {
+      return err_new("Couldn't accept", 5);
+    }
+
+    const size_t buffLen = 1024;
+    char buffer[BUFFER_LENGTH] = {0};
+    int valread = read(new_socket, buffer, BUFFER_LENGTH);
+    printf("%s\n", buffer);
+
+    string httpResponse = "HTTP/1.1 200 OK\n\n\
+    Hello World!";
+    send(new_socket, httpResponse, strlen(httpResponse), 0);
+    printf("Hello message sent\n");
+    close(new_socket);
+  }
 
   return NULL;
 }
