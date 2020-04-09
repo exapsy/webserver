@@ -2,4 +2,4 @@
 
 typedef unsigned int uint;
 
-Error *startWebserver(uint port);
+Error *start_webserver(uint port);

@@ -2,7 +2,7 @@
 
 #include "./server.h"
 
-Error *startWebserver(uint port) {
+Error *start_webserver(uint port) {
   printf("Listening on port %d ...\n", port);
 
   while (1)
