@@ -18,8 +18,8 @@ Error *err_new(const string msg, int code) {
   return err;
 }
 
-void err_print(const Error *error) { fprintf(stderr, error->msg); }
+void err_print(const Error *error) { perror(error->msg); }
 void err_print_fatal(const Error *error) {
-  fprintf(stderr, error->msg);
+  perror(error->msg);
   exit(error->code);
 }
