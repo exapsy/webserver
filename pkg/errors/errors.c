@@ -5,7 +5,7 @@
 #include "../strings/string.h"
 #include "./errors.h"
 
-Error *newError(const string msg, int code) {
+Error *err_new(const string msg, int code) {
   Error *err = malloc(sizeof(Error));
   err->code = code;
 
@@ -18,8 +18,8 @@ Error *newError(const string msg, int code) {
   return err;
 }
 
-void printError(const Error *error) { fprintf(stderr, error->msg); }
-void printFatal(const Error *error) {
+void err_print(const Error *error) { fprintf(stderr, error->msg); }
+void err_print_fatal(const Error *error) {
   fprintf(stderr, error->msg);
   exit(error->code);
 }

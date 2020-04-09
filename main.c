@@ -5,7 +5,7 @@
 int main() {
   Error *err = startWebserver(3000);
   if (err != NULL) {
-    printFatal(err);
+    err_print_fatal(err);
   }
 
   return 0;

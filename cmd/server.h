@@ -1,3 +1,5 @@
 #include "../pkg/errors/errors.h"
 
-Error *startWebserver(int port);
+typedef unsigned int uint;
+
+Error *startWebserver(uint port);

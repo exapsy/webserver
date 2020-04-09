@@ -5,6 +5,6 @@ typedef struct Error {
   string msg;
 } Error;
 
-Error *newError(const string msg, int code);
-void printError(const Error *error);
-void printFatal(const Error *error);
+Error *err_new(const string msg, int code);
+void err_print(const Error *error);
+void err_print_fatal(const Error *error);
